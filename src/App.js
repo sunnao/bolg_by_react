@@ -1,11 +1,9 @@
-/*eslint-disable*/ 
+/*eslint-disable*/
 
-import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
 
 function App() {
-  let post = "성수 우동 맛집";
   // document.querySelectorAll('h4')[1].innerHTML=post; ->js는 이렇게 해야하지만 JSX는{}안에 바로입력가능
 
   let [글제목, 글제목변경] = useState(["여자 코트 추천", "강남 맛집 탐방", "기상 미션 시작"]);
@@ -18,29 +16,69 @@ function App() {
       <div className="black-nav">
         <h4>BLOG made by React</h4>
       </div>
-      <button onClick={()=>{ 
-        let copy=[...글제목];
-        글제목변경(copy.sort()) }}>가나다순 정렬</button>
-      <div className="list">
-        {/* <h4>{글제목[2]}<span onClick={()=>{{좋아요}++}}> 💗</span> {좋아요} </h4> */}
-        {/* 1. onClick={}안에 함수 들어가야함  2. state에서 값변경 시 등호 사용 불가*/}
-        <h4>{ 글제목[0] }<span onClick={() => { 좋아요변경함수(좋아요개수+1) }}> 💗</span> {좋아요개수} </h4>
-        <p>11월 15일 발행</p>
-        <button onClick={()=>{
+
+      <button
+        onClick={() => {
           let copy = [...글제목];
-          copy[0]='송파 맛집 탐방';
-          글제목변경(copy) }}>제목수정</button>
+          글제목변경(copy.sort());
+        }}
+      >
+        가나다순 정렬
+      </button>
+
+      <div className="list">
+        {/* <h4>{글제목[0]}<span onClick={()=>{{좋아요개수}++}}> 💗</span> {좋아요개수} </h4> */}
+        {/*  ↑안되는 이유 1. onClick={}안에 함수 들어가야함  2. state에서 값변경 시 등호 사용 불가*/}
+        <h4>
+          {글제목[0]}
+          <span
+            onClick={() => {
+              좋아요변경함수(좋아요개수 + 1);
+            }}
+          >
+            {" "}
+            💗
+          </span>{" "}
+          {좋아요개수}{" "}
+        </h4>
+        <p>11월 15일 발행</p>
+
+        <button
+          onClick={() => {
+            let copy = [...글제목];
+            copy[0] = "송파 맛집 탐방";
+            글제목변경(copy);
+          }}
+        >
+          제목수정
+        </button>
       </div>
-			<div className="list">
+
+      <div className="list">
         <h4>{글제목[1]}</h4>
         <p>11월 15일 발행</p>
       </div>
-			<div className="list">
+      <div className="list">
         <h4>{글제목[2]}</h4>
         <p>11월 15일 발행</p>
       </div>
+      <Modal />
     </div>
   );
 }
+
+const Modal = () => {
+  return (
+    <div className="modal">
+      <h4>제목</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
+    </div>
+  );
+};
+// Component 컴포넌트 - 이렇게 축약한 HTML 덩어리
+// 1. 반복적인 html축약
+// 2. 큰페이지들
+// 3. 자주 변경되는 UI등을 컴포넌트로 만들면 좋음
 
 export default App;
