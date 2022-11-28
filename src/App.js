@@ -10,6 +10,7 @@ function App() {
   // let [logo, setLogo]=useState('ReactBlog');
   // 자주 변경될것 같은 html부분 위주로 state로 만들기
   let [좋아요개수, 좋아요변경함수] = useState(0);
+  let [modal, setModal] = useState(false); //모달창의 상태 -문자,숫자,boolean 무관함!
 
   return (
     <div className="App">
@@ -29,7 +30,7 @@ function App() {
       <div className="list">
         {/* <h4>{글제목[0]}<span onClick={()=>{{좋아요개수}++}}> 💗</span> {좋아요개수} </h4> */}
         {/*  ↑안되는 이유 1. onClick={}안에 함수 들어가야함  2. state에서 값변경 시 등호 사용 불가*/}
-        <h4>
+        <h4 onClick={()=>{setModal(!modal /*modal의 상태를 반대로 바꿔줌*/)}}> 
           {글제목[0]}
           <span
             onClick={() => {
@@ -62,7 +63,11 @@ function App() {
         <h4>{글제목[2]}</h4>
         <p>11월 15일 발행</p>
       </div>
-      <Modal />
+
+      {
+        modal === true ? <Modal/> : null //비어있는 html으로 null값 사용
+      } 
+
     </div>
   );
 }
