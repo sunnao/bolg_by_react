@@ -48,16 +48,16 @@ function App() {
       })}
 
       {
-        modal === true ? <Modal /> : null //비어있는 html으로 null값 사용
+        modal === true ? <Modal 글제목={글제목}/> : null //비어있는 html으로 null값 사용
       }
     </div>
   );
 }
 
-const Modal = () => {
+const Modal = (props) => {
   return (
     <div className="modal">
-      <h4>제목</h4>
+      <h4>{props.글제목[0]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
     </div>
