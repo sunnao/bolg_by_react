@@ -4,16 +4,30 @@
 div {
   box-sizing: border-box;
 }
-.abcButton{
-  margin-top: 10px;
+.deleteBtn{
+  width: 50px;
+  height: 25px;
+  margin-left: 100px;
 }
 .list {
+  display: flex;
+  align-items: center;
   padding-left: 20px;
   text-align: left;
   border-bottom: 1px solid gray;
 }
-.list > h4 {
-  display: inline-block;
+.inputDiv{
+  display: flex;
+  align-items: center;
+  padding: 30px 20px 50px;
+}
+.inputDiv > input{
+  width:220px;
+}
+.inputDiv > button{
+  margin-left: 10px;
+  width: 70px;
+  height: 25px;
 }
 .modal {
   margin-top: 20px;
